@@ -1,0 +1,33 @@
+class Solution {
+    private static final int[] ROMAN_MAP = new int[128];
+    static {
+        ROMAN_MAP['I'] = 1;
+        ROMAN_MAP['V'] = 5;
+        ROMAN_MAP['X'] = 10;
+        ROMAN_MAP['L'] = 50;
+        ROMAN_MAP['C'] = 100;
+        ROMAN_MAP['D'] = 500;
+        ROMAN_MAP['M'] = 1000;
+    }
+
+    public int romanToInt(String s) {
+        if(s == null || s.length() == 0) {
+            return 0;
+        }
+
+        final int len = s.length();
+        int result = 0;
+        int prevValue = 0;
+        
+        // 문자열을 오른쪽에서 왼쪽으로 순회
+        for (int i = len - 1; i >= 0; i--) {
+            // 기존 if-else 조건문을 static 배열 접근으로 교체
+            int currentValue = ROMAN_MAP[s.charAt(i)];
+            
+            result += (currentValue >= prevValue) ? currentValue : -currentValue;
+            prevValue = currentValue;
+        }
+        
+        return result;
+    }
+}
