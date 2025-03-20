@@ -1,0 +1,32 @@
+class Solution {
+    public boolean isValid(String s) {
+        int maxLength = s.length();
+
+        if(maxLength % 2 == 1) {
+            return false;
+        }
+
+        Stack<Character> stack = new Stack<>();
+
+        for(int i=0; i<maxLength; i++) {
+            Character curChar = (Character)s.charAt(i);
+            if(curChar == '(' || curChar == '{' || curChar == '[') {
+                stack.push(curChar);
+            }
+            else {
+                if(stack.isEmpty()) {
+                    return false;
+                }
+                char lastChar = stack.peek();
+                if( (lastChar == '(' && curChar == ')') || (lastChar == '{' && curChar == '}') || (lastChar == '[' && curChar == ']') ) {
+                    stack.pop();
+                }
+                else {
+                    return false;
+                }
+            }
+        }
+
+        return stack.isEmpty();
+    }
+}
