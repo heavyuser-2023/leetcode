@@ -1,4 +1,4 @@
-#100% 코드 짝짝짝
+//100% 코드 짝짝짝
 class Solution {
     public int removeElement(int[] nums, int val) {
         int i = 0;
@@ -13,5 +13,21 @@ class Solution {
             }
         }
         return i;
+    }
+}
+
+
+//한번더 풀개됨, 전에 풀줄 모르고 또 품 ㅡㅡ;  어쩐지 더 빠르게 이해가 되더라니...
+
+class Solution {
+    public int removeElement(int[] nums, int val) {
+        int index = 0;
+        for(int i=0;i<nums.length;i++) {
+            if(nums[i] != val) {
+                nums[index] = nums[i];
+                index++;
+            }
+        }
+        return index;
     }
 }
