@@ -1,0 +1,25 @@
+class Solution {
+    public int[] plusOne(int[] digits) {
+        int [] result = new int[digits.length+1]; 
+        boolean isUp = true;
+        for(int i=digits.length-1;i>=0;i--) {
+            if(isUp == true) {
+                if(digits[i] + 1 != 10) {
+                    digits[i] = digits[i] + 1;
+                    return digits;
+                }
+                else {
+                    digits[i] = 0;
+                    isUp = true;
+                }
+            }
+        }
+        if(isUp == true) {
+            result[0]=1;
+            for(int i=0;i<digits.length;i++) {
+                result[i+1] = digits[i];
+            }
+        }
+        return result;
+    }
+}
